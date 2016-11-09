@@ -69,7 +69,7 @@ io.sockets.on('connection', function(socket) {
             socket.username = data;
             names[socket.id] = data;
             users.push(data);
-            //addresses.push(address);
+            addresses.push(address);
             console.log('Connected: %s users are online', users.length);
             console.log('Connected: '+data+'@'+address);
             lookForPeer(socket);
