@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+
+<head>
+    <title id="title">Chat</title>
+    <!--<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css">
+    <script src="bootstrap/js/bootstrap.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--link rel="icon" href="/favicon.ico"-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div id="page">
+        <div id="userFormArea" class="row">
+            <div class="col-md-4" class='louu'></div>
+            <div class="col-md-4" class='louu'>
+                <form id="userForm">
+                    <div class="form-group">
+                        <br/><input class="form-control" id="username" placeholder="Username" /><br/>
+                        <div class="col-md-4" class='louu'></div>
+                        <div class="col-md-1" class='louu'></div>
+                        <div class="col-md-4">
+                            <input id="login" type="submit" class="btn btn-primary" value="Continue" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="queued">
+            Looking up for a peer<br/>
+            <div class="col-sm-12">
+                <img src="load.png" id="loadbar" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-primary" id="chatPage">
+        <div class="panel-heading" id="headbar">
+            <span id="header">here will be the update</span>
+            <button type="submit" class="btn btn-danger pull-right" id="leaveRoom">Exit Chat</button>
+            <button type="submit" class="btn btn-success pull-right" id="newChat">Start New Chat</button>
+        </div>
+        <div id="messageArea" class="row">
+            <div class="panel-body" id="textbox">
+                <div class="col-md-12" id="chatArea">
+                    <div class="chat" id="chat">
+                    </div>
+                </div>
+                <div class="panel-footer navbar-fixed-bottom">
+                    <form id="messageForm">
+                        <input class="form-control" id="message" placeholder="Type your message and hit Enter to send"></input>
+                        <button type="submit" class="btn btn-primary pull-right" id="send">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var socket = io.connect({
+            'sync disconnect on unload': true
+        });
+        var $messageForm = $('#messageForm');
+        var $message = $('#message');
+        var $chat = $('#chat');
+        var $messageArea = $('#messageArea');
+        var $userFormArea = $('#userFormArea');
+        var $userForm = $('#userForm');
+        var $users = $('#users');
+        var $username = $('#username');
+        var $leaveRoom = $('#leaveRoom');
+        var $queued = $('#queued');
+        var $newChat = $('#newChat');
+        var $header = $('#header');
+        var $headbar = $('#headbar');
+        var $title = $('title');
+        var $page = $('#page');
+        var connected = false;
+        /*var objDiv = document.getElementById("well");
+        objDiv.scrollTop = objDiv.scrollHeight;*/
+
+        function jumpToPageBottom() {
+            $('html, body').scrollTop($(document).height());
+        }
+
+        socket.on('userExists', function(data) {
+            alert("\t\tOops!\n" + data + " username already exists.\nTry a different one!");
+        });
+
+        socket.on('portExists', function(data) {
+            alert("A user at " + data + " already exits.\nOne connection per IP is allowed.");
+        });
+
+        socket.on('chat start', function(data, name) {
+            $chat.load(document.URL + ' #chat');
+            $page.hide();
+            $queued.hide();
+            $headbar.show();
+            $leaveRoom.slideDown();
+            $newChat.hide();
+            $messageArea.show();
+            $messageForm.show();
+            $title.html('Chat | ' + name);
+            $headbar.hide();
+            $header.html('Connected to <strong>' + data + '</strong></div>');
+            $headbar.slideDown();
+        });
+
+        socket.on('chat end', function(data) {
+            $headbar.hide();
+            $header.html('<strong>' + data + '</strong> has ended the chat.');
+            $headbar.slideDown();
+            $messageForm.hide();
+            $leaveRoom.slideUp();
+            $newChat.slideDown();
+        });
+
+        $leaveRoom.click(function(e) {
+            e.preventDefault();
+            socket.emit('leave room');
+        });
+
+        $newChat.click(function(e) {
+            e.preventDefault();
+            $headbar.hide();
+            $messageArea.hide();
+            $messageForm.hide();
+            $page.show();
+            $queued.show();
+            console.log('new chat requested');
+            socket.emit('new chat');
+        });
+
+        socket.on('room exited', function() {
+            $headbar.hide();
+            $header.html('<strong>You</strong> ended the chat. ');
+            $headbar.slideDown();
+            $messageForm.hide();
+            $leaveRoom.hide();
+            $newChat.show();
+        });
+
+        $messageForm.submit(function(e) {
+            console.log("under client.html");
+            e.preventDefault();
+            if (!($message.val().length === 0))
+                socket.emit('send message', $message.val());
+            $message.val('');
+            //return false;
+        });
+
+        socket.on('queued', function() {
+            $messageForm.hide();
+            $leaveRoom.hide();
+            $messageArea.hide();
+            $userFormArea.hide();
+            $queued.show();
+        });
+
+        $userForm.submit(function(e) {
+            e.preventDefault();
+            socket.emit('setUsername', $username.val(), function(data) {
+                if (data) {
+                    $userFormArea.hide();
+                    $queued.show();
+                    connected = true;
+                }
+            });
+            $username.val('');
+            //return false;
+        });
+
+        socket.on('new message', function(data) {
+            $chat.append('<div class = "well"><strong>' + data.user + '</strong> : ' + data.msg + '</div>');
+            jumpToPageBottom();
+        });
+    </script>
+</body>
+
+</html>
