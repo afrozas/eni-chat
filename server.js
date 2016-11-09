@@ -64,7 +64,7 @@ var lookForPeer = function(socket) {
 io.sockets.on('connection', function(socket) {
     socket.on('setUsername', function(data, callback) {
         var address = socket.handshake.address;
-        if (!(users.indexOf(data) > -1) (!(addresses.indexOf(address) > -1)) ) {
+        if (!(users.indexOf(data) > -1) && (!(addresses.indexOf(address) > -1)) ) {
             callback(true);
             socket.username = data;
             names[socket.id] = data;
