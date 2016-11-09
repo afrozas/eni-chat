@@ -27,11 +27,11 @@ users = [];
 connections = [];
 addresses = [];
 
-console.log = function() {
+/*console.log = function() {
     logFile.write(util.format.apply(null, arguments) + '\n');
     logStdout.write(util.format.apply(null, arguments) + '\n');
 }
-console.error = console.log;
+console.error = console.log;*/
 
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/client.html');
