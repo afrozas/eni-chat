@@ -13,11 +13,12 @@ app.use('/scripts', express.static(__dirname + '/bootstrap/js/bootstrap.js'));
 app.use('/scripts', express.static(__dirname + '/jquery.js'));*/
 //app.use(favicon(path.join(__dirname,'favicon.ico')));//experimental
 
-var filename = 'log_' + (((new Date()).toUTCString()).replace(/[^a-z\d]+/gi, "")) + '.txt';
+/*var filename = 'log_' + (((new Date()).toUTCString()).replace(/[^a-z\d]+/gi, "")) + '.txt';
 var logFile = fs.createWriteStream(__dirname + '/logs/' + filename, {
     flags: 'a'
 });
-var logStdout = process.stdout;
+var logStdout = process.stdout;*/
+// error in deploying on heroku :: commented out logging 
 
 var queue = [];
 var rooms = {};
@@ -63,7 +64,7 @@ var lookForPeer = function(socket) {
 io.sockets.on('connection', function(socket) {
     socket.on('setUsername', function(data, callback) {
         var address = socket.handshake.address;
-        if (!(users.indexOf(data) > -1) /*&&(!(addresses.indexOf(address) > -1))*/ ) {
+        if (!(users.indexOf(data) > -1) (!(addresses.indexOf(address) > -1)) ) {
             callback(true);
             socket.username = data;
             names[socket.id] = data;
@@ -72,17 +73,17 @@ io.sockets.on('connection', function(socket) {
             console.log('Connected: %s users are online', users.length);
             console.log('Connected: '+data+'@'+address);
             lookForPeer(socket);
-        } else if ((users.indexOf(data) > -1) /*&&(!(addresses.indexOf(address) > -1))*/ ) {
+        } else if ((users.indexOf(data) > -1) &&(!(addresses.indexOf(address) > -1)) ) {
             callback(false);
             socket.emit('userExists', data);
             console.log("Disconnected: %s users are online", users.length);
         }
-        /**else if(!(users.indexOf(data) > -1)&&((addresses.indexOf(address) > -1)))
+        else if(!(users.indexOf(data) > -1)&&((addresses.indexOf(address) > -1)))
         {
           callback(false);
           socket.emit('portExists', address);
           console.log("Disconnected: %s users are online", users.length);
-        }*/
+        }
     });
 
 
@@ -116,13 +117,11 @@ io.sockets.on('connection', function(socket) {
         delete names[socket.id];
         //queue.splice(queue.indexOf(socket),1);
         users.splice(users.indexOf(socket.username), 1);
-        //addresses.splice(addresses.indexOf(socket.handshake.address),1);
+        addresses.splice(addresses.indexOf(socket.handshake.address),1);
         console.log("Disconnected: %s users are online", users.length);
     });
 
 });
-
-
 
 
 http.listen(process.env.PORT || 3000, function() {
