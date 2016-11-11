@@ -22,6 +22,8 @@ Your app should now be running on [localhost:3000](http://localhost:3000/).
 
 ## Deploying to Heroku
 
+Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+
 ```
 $ heroku create
 $ git push heroku master
