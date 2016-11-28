@@ -43,7 +43,7 @@ $ heroku open
 
 
 ### How do I install eni-chat with Docker?
-To install with Docker
+To pull the Docker image : 
 ```
 $ docker pull enigmaeth/eni-chat
 ```
