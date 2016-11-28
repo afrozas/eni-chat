@@ -20,19 +20,33 @@ $ npm start
 
 Your app should now be running on [localhost:3000](http://localhost:3000/).
 
-## Deploying to Heroku
+## Download, Build, Run
 
-Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
 
+
+
+### How do I deploy eni-chat with Heroku?
+You can easily deploy to Heroku by clicking the Deploy to Heroku button above. To deploy using Heroku Toolbelt, clone the repository and change directory into it.
 ```
+$ git clone https://github.com/enigmaeth/eni-chat.git 
+$ cd eni-chat
 $ heroku create
 $ git push heroku master
 $ heroku ps:scale web=1
 $ heroku open
 ```
-or
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+### How do I install eni-chat with Docker?
+To install loklak with Docker
+```
+$ docker pull enigmaeth/eni-chat
+```
+docker pull enigmaeth/eni-chat
+
+
 
 ## Documentation
 
