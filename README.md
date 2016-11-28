@@ -5,7 +5,6 @@
 An anonymous peer-to-peer chat platform written in [Node.js](https://nodejs.org/en/) using [socket.io](https://scoket.io) .  
 >Heroku app : https://eni-chat.herokuapp.com  
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
 
 ## Running Locally
 
@@ -28,7 +27,11 @@ Your app should now be running on [localhost:3000](http://localhost:3000/).
 
 
 ### How do I deploy eni-chat with Heroku?
-You can easily deploy to Heroku by clicking the Deploy to Heroku button above. To deploy using Heroku Toolbelt, clone the repository and change directory into it.
+You can easily deploy to Heroku by clicking the Deploy to Heroku button above. 
+
+This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article .
+
+To deploy using Heroku Toolbelt, clone the repository and change directory into it.
 ```
 $ git clone https://github.com/enigmaeth/eni-chat.git 
 $ cd eni-chat
