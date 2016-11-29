@@ -22,7 +22,7 @@ Your app should now be running on [localhost:3000](http://localhost:3000/).
 ## Download, Build, Run
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
+
 
 
 
