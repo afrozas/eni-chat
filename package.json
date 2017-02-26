@@ -53,6 +53,7 @@
     "mime-types": "^2.1.12",
     "ms": "^0.7.2",
     "negotiator": "^0.6.1",
+    "npm": "^4.0.5",
     "object-component": "0.0.3",
     "on-finished": "^2.3.0",
     "options": "0.0.6",
