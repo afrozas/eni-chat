@@ -92,7 +92,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/enigmaeth/chat-app.git"
+    "url": "https://github.com/enigmaeth/eni-chat.git"
   },
   "keywords": [
     "socket.io",
@@ -102,7 +102,7 @@
   "author": "enigmaeth",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/enigmaeth/chat-app/issues"
+    "url": "https://github.com/enigmaeth/eni-chat/issues"
   },
-  "homepage": "https://github.com/enigmaeth/chat-app#readme"
+  "homepage": "https://github.com/enigmaeth/eni-chat#readme"
 }
