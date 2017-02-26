@@ -1,3 +1,5 @@
+https://badge.fury.io/js/eni-chat.svg
+https://david-dm.org/enigmaeth/eni-chat.svg
 # `eni-chat`
 
 ****
