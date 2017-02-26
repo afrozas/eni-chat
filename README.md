@@ -1,5 +1,6 @@
-https://badge.fury.io/js/eni-chat.svg
-https://david-dm.org/enigmaeth/eni-chat.svg
+[![Package](https://badge.fury.io/js/eni-chat.svg)](https://badge.fury.io/js/eni-chat)
+[![Dependency Status](https://david-dm.org/enigmaeth/eni-chat.svg)](https://david-dm.org/enigmaeth/eni-chat)
+
 # `eni-chat`
 
 ****
