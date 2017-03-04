@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/eni-chat.svg)](https://badge.fury.io/js/eni-chat)
 [![Dependency Status](https://david-dm.org/enigmaeth/eni-chat.svg)](https://david-dm.org/enigmaeth/eni-chat)
-[![Join the chat at https://gitter.im/enigmaeth/eni-chat](https://badges.gitter.im/enigmaeth/eni-chat.svg)](https://gitter.im/enigmaeth/eni-chat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/eni-chat/general](https://badges.gitter.im/eni-chat/general.svg)](https://gitter.im/eni-chat/general?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # `eni-chat`
 
