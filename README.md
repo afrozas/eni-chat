@@ -1,5 +1,5 @@
 [![npm version](https://badge.fury.io/js/eni-chat.svg)](https://badge.fury.io/js/eni-chat)
-[![Dependency Status](https://david-dm.org/enigmaeth/eni-chat.svg)](https://david-dm.org/enigmaeth/eni-chat)
+[![Dependency Status](https://david-dm.org/afrozas/eni-chat.svg)](https://david-dm.org/afrozas/eni-chat)
 [![Join the chat at https://gitter.im/eni-chat/general](https://badges.gitter.im/eni-chat/general.svg)](https://gitter.im/eni-chat/general?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # `eni-chat`
@@ -15,7 +15,7 @@ An anonymous peer-to-peer chat platform written in [Node.js](https://nodejs.org/
 Make sure you have [Node.js](http://nodejs.org/) installed.
 
 ```sh
-$ git clone https://github.com/enigmaeth/eni-chat.git # or clone your own fork
+$ git clone https://github.com/afrozas/eni-chat.git # or clone your own fork
 $ cd eni-chat
 $ npm install
 $ npm start
@@ -34,7 +34,7 @@ This application supports the [Getting Started with Node on Heroku](https://devc
 
 To deploy using Heroku Toolbelt, clone the repository and change directory into it.
 ```
-$ git clone https://github.com/enigmaeth/eni-chat.git 
+$ git clone https://github.com/afrozas/eni-chat.git 
 $ cd eni-chat
 $ heroku create
 $ git push heroku master
@@ -46,7 +46,7 @@ $ heroku open
 ### How do I install eni-chat with Docker?
 To pull the Docker image : 
 ```
-$ docker pull enigmaeth/eni-chat
+$ docker pull afrozas/eni-chat
 ```
 
 
